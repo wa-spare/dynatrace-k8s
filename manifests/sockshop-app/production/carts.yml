@@ -8,7 +8,7 @@ spec:
   replicas: 1
   selector:
     matchLabels:
-      app: car
+      app: carts
   template:
     metadata:
       annotations:
