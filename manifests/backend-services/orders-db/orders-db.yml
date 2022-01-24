@@ -91,13 +91,16 @@ spec:
       storage: 100Mi
 status: {}
 ---
-apiVersion: extensions/v1beta1
+apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: orders-db
   namespace: production
 spec:
   replicas: 1
+  selector:
+    matchLabels:
+      name: orders-db
   strategy:
     type: Recreate
   template:
