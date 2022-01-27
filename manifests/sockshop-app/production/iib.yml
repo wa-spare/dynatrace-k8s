@@ -3,7 +3,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: ace
-  namespace: production
+  namespace: ace
 spec:
   replicas: 2
   selector:
@@ -74,7 +74,7 @@ metadata:
   name: ace
   labels:
     app: ace
-  namespace: production
+  namespace: ace
 spec:
   ports:
   - name: http
