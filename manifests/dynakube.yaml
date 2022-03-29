@@ -116,8 +116,8 @@ spec:
       #
       # args: []
       
-      args:
-        - "--set-host-group=sockshop-aks"
+      #args:
+      #  - "--set-host-group=sockshop-aks"
       
 
   # Configuration for ActiveGate instances.
@@ -171,7 +171,7 @@ spec:
     # Optional: Set activation group for ActiveGate
     #
     # group: ""
-    group: sockshop-aks
+    # group: sockshop-aks
 
     # Optional: Add a custom properties file by providing it as a value or reference it from a secret
     # If referenced from a secret, make sure the key is called 'customProperties'
@@ -181,3 +181,4 @@ spec:
     #     [connectivity]
     #     networkZone=
     #   valueFrom: myCustomPropertiesConfigMap
+0
