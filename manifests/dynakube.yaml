@@ -117,7 +117,7 @@ spec:
       # args: []
       
       args:
-        - --set-host-group="sockshop-aks"
+        - "--set-host-group=sockshop-aks"
       
 
   # Configuration for ActiveGate instances.
