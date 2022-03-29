@@ -116,8 +116,8 @@ spec:
       #
       # args: []
       
-      #args:
-      #  - "--set-host-group=sockshop-aks"
+      args:
+        - "--set-host-group=sockshop-aks"
       
 
   # Configuration for ActiveGate instances.
@@ -181,4 +181,3 @@ spec:
     #     [connectivity]
     #     networkZone=
     #   valueFrom: myCustomPropertiesConfigMap
-0
