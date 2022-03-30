@@ -6,7 +6,7 @@ metadata:
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: dotnetcore
+  name: weatherforecast
   namespace: dotnetcore
 spec:
   replicas: 2
@@ -16,7 +16,7 @@ spec:
       stage: prod
       release: stable
       tier: "application"
-      product: "dotnetcoreapi"
+      product: "weatherforecast"
   template:
     metadata:
       annotations:
@@ -24,15 +24,15 @@ spec:
         dynatrace/instrument: 'false'
         pipeline.stage: prod-stable
         pipeline.build: 2.3.1.3476
-        pipeline.project: sockshop
-        support.contact: 'john.doe@sockshop.com'
-        support.channel: '#support-sockshop-services'
+        pipeline.project: weatherforecast
+        support.contact: 'john.doe@weatherforecast.com'
+        support.channel: '#support-weatherforecast-services'
       labels:
-        app: ace
+        app: weatherforecast
         stage: prod
         release: stable
-        tier: 'messaging'
-        product: 'ibm-ace'
+        tier: 'application'
+        product: 'weatherforecast'
     spec:
       containers:
       - name: ace
@@ -44,22 +44,18 @@ spec:
           value: MYMBSERVER
         - name: LICENSE
           value: accept
-        - name: ACE_ENABLE_METRICS
-          value: 'true'
         - name: DT_CLUSTER_ID
-          value: 'ace-production'
+          value: 'dotnetcoreapi-production'
         - name: DT_RELEASE_BUILD_VERSION
           value: '2021-12-12'          
         - name: DT_RELEASE_VERSION
           value: '1.0.1'
         - name: DT_RELEASE_PRODUCT
-          value: 'ACME Messaging'
+          value: 'Weather Forecast'
         - name: DT_RELEASE_STAGE
           value: 'User-Acceptance'                    
         ports:
-        - containerPort: 7600
-        - containerPort: 7800
-        - containerPort: 9483
+        - containerPort: 80
         volumeMounts:
         - mountPath: /tmp
           name: tmp-volume
@@ -73,18 +69,15 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: ace
+  name: weatherforecast
   labels:
-    app: ace
-  namespace: ace
+    app: weatherforecast
+  namespace: dotnetcore
 spec:
   ports:
   - name: http
-    port: 7600
-    targetPort: 7600
-  - name: http2
-    port: 7800
-    targetPort: 7800  
+    port: 80
+    targetPort: 80
   selector:
-    app: ace
+    app: weatherforecast
   type: LoadBalancer
