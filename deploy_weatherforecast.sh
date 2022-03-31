@@ -1,4 +1,4 @@
 
 #!/bin/bash
 
-kubectl apply -f manifests/sockshop-app/dotnetcoreapi/
+kubectl apply -f manifests/sockshop-app/mydotnetcoreapi/
